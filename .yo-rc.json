@@ -1,0 +1,38 @@
+{
+    "generator-jhipster": {
+        "promptValues": {
+            "packageName": "com.imdbof",
+            "nativeLanguage": "en"
+        },
+        "jhipsterVersion": "5.8.1",
+        "applicationType": "monolith",
+        "baseName": "imdbof",
+        "packageName": "com.imdbof",
+        "packageFolder": "com/imdbof",
+        "serverPort": "8080",
+        "authenticationType": "jwt",
+        "cacheProvider": "ehcache",
+        "enableHibernateCache": true,
+        "websocket": false,
+        "databaseType": "sql",
+        "devDatabaseType": "h2Disk",
+        "prodDatabaseType": "mysql",
+        "searchEngine": false,
+        "messageBroker": false,
+        "serviceDiscoveryType": false,
+        "buildTool": "maven",
+        "enableSwaggerCodegen": false,
+        "jwtSecretKey": "ZWFjYTIwMWQ3NzI4NDk4ZGM3Njc5YjNmNmQ2MDg1YzA3YTAzODkwNDIwMDIwY2QyOWFmZTZmOTY1N2Q3YjkyMGViOTY3YWUwZTg5NzkwNGI1NTFkM2Y3YmM5ZjkyOWI0ZTZhNDIwMWE5Nzc2M2U3ODlkYzVlN2MzZTI2NzM4NWE=",
+        "clientFramework": "angularX",
+        "useSass": true,
+        "clientPackageManager": "npm",
+        "testFrameworks": [],
+        "jhiPrefix": "jhi",
+        "entitySuffix": "",
+        "dtoSuffix": "DTO",
+        "otherModules": [],
+        "enableTranslation": true,
+        "nativeLanguage": "en",
+        "languages": ["en"]
+    }
+}
