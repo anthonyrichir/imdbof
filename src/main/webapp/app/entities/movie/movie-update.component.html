@@ -1,0 +1,174 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-movie-heading" jhiTranslate="imdbofApp.movie.home.createOrEditLabel">Create or edit a Movie</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!movie.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="movie.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="imdbofApp.movie.title" for="field_title">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title"
+                        [(ngModel)]="movie.title" required/>
+                    <div [hidden]="!(editForm.controls.title?.dirty && editForm.controls.title?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.title?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="imdbofApp.movie.originalTitle" for="field_originalTitle">Original Title</label>
+                    <input type="text" class="form-control" name="originalTitle" id="field_originalTitle"
+                        [(ngModel)]="movie.originalTitle" required/>
+                    <div [hidden]="!(editForm.controls.originalTitle?.dirty && editForm.controls.originalTitle?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.originalTitle?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="imdbofApp.movie.voteCount" for="field_voteCount">Vote Count</label>
+                    <input type="number" class="form-control" name="voteCount" id="field_voteCount"
+                        [(ngModel)]="movie.voteCount" required/>
+                    <div [hidden]="!(editForm.controls.voteCount?.dirty && editForm.controls.voteCount?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.voteCount?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.voteCount?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="imdbofApp.movie.voteAverage" for="field_voteAverage">Vote Average</label>
+                    <input type="number" class="form-control" name="voteAverage" id="field_voteAverage"
+                        [(ngModel)]="movie.voteAverage" required/>
+                    <div [hidden]="!(editForm.controls.voteAverage?.dirty && editForm.controls.voteAverage?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.voteAverage?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.voteAverage?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="imdbofApp.movie.video" for="field_video">Video</label>
+                    <input type="checkbox" class="form-control" name="video" id="field_video"
+                        [(ngModel)]="movie.video" />
+                    <div [hidden]="!(editForm.controls.video?.dirty && editForm.controls.video?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.video?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="imdbofApp.movie.popularity" for="field_popularity">Popularity</label>
+                    <input type="number" class="form-control" name="popularity" id="field_popularity"
+                        [(ngModel)]="movie.popularity" required/>
+                    <div [hidden]="!(editForm.controls.popularity?.dirty && editForm.controls.popularity?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.popularity?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.popularity?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="imdbofApp.movie.posterPath" for="field_posterPath">Poster Path</label>
+                    <input type="text" class="form-control" name="posterPath" id="field_posterPath"
+                        [(ngModel)]="movie.posterPath" required/>
+                    <div [hidden]="!(editForm.controls.posterPath?.dirty && editForm.controls.posterPath?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.posterPath?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="imdbofApp.movie.originalLanguage" for="field_originalLanguage">Original Language</label>
+                    <input type="text" class="form-control" name="originalLanguage" id="field_originalLanguage"
+                        [(ngModel)]="movie.originalLanguage" required/>
+                    <div [hidden]="!(editForm.controls.originalLanguage?.dirty && editForm.controls.originalLanguage?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.originalLanguage?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="imdbofApp.movie.backdropPath" for="field_backdropPath">Backdrop Path</label>
+                    <input type="text" class="form-control" name="backdropPath" id="field_backdropPath"
+                        [(ngModel)]="movie.backdropPath" required/>
+                    <div [hidden]="!(editForm.controls.backdropPath?.dirty && editForm.controls.backdropPath?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.backdropPath?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="imdbofApp.movie.adult" for="field_adult">Adult</label>
+                    <input type="checkbox" class="form-control" name="adult" id="field_adult"
+                        [(ngModel)]="movie.adult" />
+                    <div [hidden]="!(editForm.controls.adult?.dirty && editForm.controls.adult?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.adult?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="imdbofApp.movie.releaseDate" for="field_releaseDate">Release Date</label>
+                    <input type="text" class="form-control" name="releaseDate" id="field_releaseDate"
+                        [(ngModel)]="movie.releaseDate" required/>
+                    <div [hidden]="!(editForm.controls.releaseDate?.dirty && editForm.controls.releaseDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.releaseDate?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="imdbofApp.movie.overview" for="field_overview">Overview</label>
+                    <textarea class="form-control" name="overview" id="field_overview"
+                        [(ngModel)]="movie.overview" required></textarea>
+                    <div [hidden]="!(editForm.controls.overview?.dirty && editForm.controls.overview?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.overview?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="imdbofApp.movie.category" for="field_category">Category</label>
+                    <select class="form-control" id="field_category" multiple name="category" [(ngModel)]="movie.categories">
+                        <option [ngValue]="getSelected(movie.categories, categoryOption)" *ngFor="let categoryOption of categories; trackBy: trackCategoryById">{{categoryOption.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

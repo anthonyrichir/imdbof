@@ -38,6 +38,10 @@ public class CacheConfiguration {
             cm.createCache(com.imdbof.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.imdbof.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.imdbof.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.imdbof.domain.Category.class.getName(), jcacheConfiguration);
+            cm.createCache(com.imdbof.domain.Category.class.getName() + ".movies", jcacheConfiguration);
+            cm.createCache(com.imdbof.domain.Movie.class.getName(), jcacheConfiguration);
+            cm.createCache(com.imdbof.domain.Movie.class.getName() + ".categories", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

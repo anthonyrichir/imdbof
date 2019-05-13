@@ -1,0 +1,84 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="imdbofApp.movie.home.title">Movies</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-movie" [routerLink]="['/movie/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="imdbofApp.movie.home.createLabel">
+            Create new Movie
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="movies">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="title"><span jhiTranslate="imdbofApp.movie.title">Title</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="originalTitle"><span jhiTranslate="imdbofApp.movie.originalTitle">Original Title</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="voteCount"><span jhiTranslate="imdbofApp.movie.voteCount">Vote Count</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="voteAverage"><span jhiTranslate="imdbofApp.movie.voteAverage">Vote Average</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="video"><span jhiTranslate="imdbofApp.movie.video">Video</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="popularity"><span jhiTranslate="imdbofApp.movie.popularity">Popularity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="posterPath"><span jhiTranslate="imdbofApp.movie.posterPath">Poster Path</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="originalLanguage"><span jhiTranslate="imdbofApp.movie.originalLanguage">Original Language</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="backdropPath"><span jhiTranslate="imdbofApp.movie.backdropPath">Backdrop Path</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="adult"><span jhiTranslate="imdbofApp.movie.adult">Adult</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="releaseDate"><span jhiTranslate="imdbofApp.movie.releaseDate">Release Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="overview"><span jhiTranslate="imdbofApp.movie.overview">Overview</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let movie of movies ;trackBy: trackId">
+                <td><a [routerLink]="['/movie', movie.id, 'view' ]">{{movie.id}}</a></td>
+                <td>{{movie.title}}</td>
+                <td>{{movie.originalTitle}}</td>
+                <td>{{movie.voteCount}}</td>
+                <td>{{movie.voteAverage}}</td>
+                <td>{{movie.video}}</td>
+                <td>{{movie.popularity}}</td>
+                <td>{{movie.posterPath}}</td>
+                <td>{{movie.originalLanguage}}</td>
+                <td>{{movie.backdropPath}}</td>
+                <td>{{movie.adult}}</td>
+                <td>{{movie.releaseDate}}</td>
+                <td>{{movie.overview}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/movie', movie.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/movie', movie.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'movie', { outlets: { popup: movie.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="movies && movies.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

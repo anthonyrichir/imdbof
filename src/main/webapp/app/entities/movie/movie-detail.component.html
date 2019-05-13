@@ -1,0 +1,77 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="movie">
+            <h2><span jhiTranslate="imdbofApp.movie.detail.title">Movie</span> {{movie.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="imdbofApp.movie.title">Title</span></dt>
+                <dd>
+                    <span>{{movie.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="imdbofApp.movie.originalTitle">Original Title</span></dt>
+                <dd>
+                    <span>{{movie.originalTitle}}</span>
+                </dd>
+                <dt><span jhiTranslate="imdbofApp.movie.voteCount">Vote Count</span></dt>
+                <dd>
+                    <span>{{movie.voteCount}}</span>
+                </dd>
+                <dt><span jhiTranslate="imdbofApp.movie.voteAverage">Vote Average</span></dt>
+                <dd>
+                    <span>{{movie.voteAverage}}</span>
+                </dd>
+                <dt><span jhiTranslate="imdbofApp.movie.video">Video</span></dt>
+                <dd>
+                    <span>{{movie.video}}</span>
+                </dd>
+                <dt><span jhiTranslate="imdbofApp.movie.popularity">Popularity</span></dt>
+                <dd>
+                    <span>{{movie.popularity}}</span>
+                </dd>
+                <dt><span jhiTranslate="imdbofApp.movie.posterPath">Poster Path</span></dt>
+                <dd>
+                    <span>{{movie.posterPath}}</span>
+                </dd>
+                <dt><span jhiTranslate="imdbofApp.movie.originalLanguage">Original Language</span></dt>
+                <dd>
+                    <span>{{movie.originalLanguage}}</span>
+                </dd>
+                <dt><span jhiTranslate="imdbofApp.movie.backdropPath">Backdrop Path</span></dt>
+                <dd>
+                    <span>{{movie.backdropPath}}</span>
+                </dd>
+                <dt><span jhiTranslate="imdbofApp.movie.adult">Adult</span></dt>
+                <dd>
+                    <span>{{movie.adult}}</span>
+                </dd>
+                <dt><span jhiTranslate="imdbofApp.movie.releaseDate">Release Date</span></dt>
+                <dd>
+                    <span>{{movie.releaseDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="imdbofApp.movie.overview">Overview</span></dt>
+                <dd>
+                    <span>{{movie.overview}}</span>
+                </dd>
+                <dt><span jhiTranslate="imdbofApp.movie.category">Category</span></dt>
+                <dd>
+                    <span *ngFor="let category of movie.categories; let last = last">
+                        <a [routerLink]="['/category', category?.id, 'view' ]">{{category.name}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/movie', movie.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
