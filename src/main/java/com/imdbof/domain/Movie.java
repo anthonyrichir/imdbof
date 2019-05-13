@@ -130,6 +130,11 @@ public class Movie implements Serializable {
         this.voteCount = voteCount;
     }
 
+    public Movie addVote() {
+        this.voteCount++;
+        return this;
+    }
+
     public Float getVoteAverage() {
         return voteAverage;
     }

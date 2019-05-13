@@ -1,0 +1,38 @@
+  type Query {
+    hello: String!
+    getMovies(categoryName: String): [Movie!]
+    getCategories: [Category!]
+    getMovie(id: ID!): Movie
+  }
+
+  type Mutation {
+    addVote(movieId: ID!): Movie!
+  }
+
+  type Subscription {
+    voteAdded: Movie
+  }
+
+  type Category {
+    id: ID!
+    name: String!
+    movies: [Movie!]
+  }
+
+  type Movie {
+    id: ID!
+    title: String!
+    originalTitle: String!
+    overview: String!
+    voteCount: Int!
+    voteAverage: Float!
+    video: Boolean!
+    popularity: Float!
+    posterPath: String!
+    originalLanguage: String!
+    backdropPath: String!
+    adult: Boolean!
+    releaseDate: String!
+#    category_ids: [ID!]
+    categories: [Category!]
+  }
